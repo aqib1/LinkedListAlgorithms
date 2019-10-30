@@ -17,6 +17,49 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 		return this;
 	}
 
+	public Node<E> pop() {
+		Node<E> node = peek();
+		end = end.previous;
+		end.next = null;
+		return node;
+	}
+
+	@Override
+	public E remove(int index) {
+		Node<E> node = null;
+		Node<E> temp = end;
+		while (index > 0) {
+			temp = temp.previous;
+			index--;
+		}
+		node = temp;
+		if (!Objects.isNull(temp.previous) && !Objects.isNull(temp.next)) {
+			temp.previous.next = temp.next;
+			temp.next.previous = temp.previous;
+		} else {
+			if (Objects.isNull(temp.previous)) {
+				temp.next.previous = null;
+				start = temp.next;
+			}
+			if (Objects.isNull(temp.next)) {
+				temp.previous.next = null;
+				end = temp.previous;
+			}
+		}
+		return node.value;
+	}
+
+	public Node<E> poll() {
+		Node<E> node = start;
+		start = start.next;
+		start.previous = null;
+		return node;
+	}
+
+	public LinkedList<E>.Node<E> peek() {
+		return end;
+	}
+
 	private void createLinked(E e) {
 		if (Objects.isNull(start)) {
 			createHead(e);
@@ -143,6 +186,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 
 		public void setPrevious(Node<T> previous) {
 			this.previous = previous;
+		}
+
+		@Override
+		public String toString() {
+			return "" + value;
 		}
 	}
 }
