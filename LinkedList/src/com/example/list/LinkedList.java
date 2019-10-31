@@ -26,6 +26,8 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 
 	@Override
 	public E remove(int index) {
+		if(index < 0 || index > size)
+			throw new ArrayIndexOutOfBoundsException("Index is invalid");
 		Node<E> node = null;
 		Node<E> temp = end;
 		while (index > 0) {
@@ -33,6 +35,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 			index--;
 		}
 		node = temp;
+		remove(temp);
+		return node.value;
+	}
+
+	public void remove(Node<E> temp) {
 		if (!Objects.isNull(temp.previous) && !Objects.isNull(temp.next)) {
 			temp.previous.next = temp.next;
 			temp.next.previous = temp.previous;
@@ -46,7 +53,6 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 				end = temp.previous;
 			}
 		}
-		return node.value;
 	}
 
 	public Node<E> poll() {
