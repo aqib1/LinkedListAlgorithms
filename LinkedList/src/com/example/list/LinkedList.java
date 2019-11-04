@@ -57,7 +57,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 		return node.value;
 	}
 
-	public void remove(Node<E> temp) {
+	private void remove(Node<E> temp) {
 		if (!Objects.isNull(temp.previous) && !Objects.isNull(temp.next)) {
 			temp.previous.next = temp.next;
 			temp.next.previous = temp.previous;
