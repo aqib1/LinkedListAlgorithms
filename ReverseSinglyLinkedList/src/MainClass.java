@@ -37,6 +37,40 @@ public class MainClass {
 		System.out.println(linkedList);
 	}
 
+	private static LinkedList reverseLinkedList(LinkedList linkedList) {
+		LinkedList reverse = new LinkedList();
+		LinkedList.Node current = linkedList.node, next = null, last = null;
+		while (current != null) {
+			next = current.next;
+			current.next = last;
+			
+			last = current;
+			current = next;
+			
+		}
+		reverse.node = last;
+		return reverse;
+	}
+
+//	private static LinkedList reverseLinkedList(LinkedList linkedList) {
+//		LinkedList list = new LinkedList();
+//		LinkedList.Node current = linkedList.node;
+//		LinkedList.Node last = null, next = null;
+//		// next - current
+//		// previous - current
+//		// previous - reserved current
+//		// current - move next
+//		while (current != null) {
+//			next = current.next;
+//			current.next = last;
+//			
+//			last = current;
+//			current = next;
+//		}
+//		list.node = last;
+//		return list;
+//	}
+
 	// steps to reverse singly linkedlist
 
 	/*
@@ -44,20 +78,20 @@ public class MainClass {
 	 * current.next = prev -> setting back-up 5- prev = current -> securing current
 	 * state with prev-back-up 6- current = next -> moving current
 	 */
-	private static LinkedList reverseLinkedList(LinkedList linkedList) {
-		LinkedList li = new LinkedList();
-		LinkedList.Node current = linkedList.node;
-		LinkedList.Node prev = null;
-		LinkedList.Node next = null;
-		while (current != null) {
-			next = current.next; //next 
-			current.next = prev;// back-up
-			prev = current;// securing current state
-			current = next;// current to next
-		}
-		li.node = prev;
-		return li;
-	}
+//	private static LinkedList reverseLinkedList(LinkedList linkedList) {
+//		LinkedList li = new LinkedList();
+//		LinkedList.Node current = linkedList.node;
+//		LinkedList.Node prev = null;
+//		LinkedList.Node next = null;
+//		while (current != null) {
+//			next = current.next; //next 
+//			current.next = prev;// back-up
+//			prev = current;// securing current state
+//			current = next;// current to next
+//		}
+//		li.node = prev;
+//		return li;
+//	}
 
 //	private static LinkedList reverseLinkedList(LinkedList linkedList) {
 //		LinkedList reverse = new LinkedList();
