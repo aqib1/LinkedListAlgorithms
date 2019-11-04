@@ -13,8 +13,7 @@ public class MainClass {
 				.push(3)
 				.push(4)
 				.push(5)
-				.push(6);
-		li.remove(5);
+				.pushUnique(5);
 		System.out.println(li);
 		
 //		java.util.LinkedList<Integer> t = new java.util.LinkedList<>();

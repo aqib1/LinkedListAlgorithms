@@ -12,6 +12,24 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 	private Node<E> end;
 	private int size;
 
+	public LinkedList<E> pushUnique(E e) {
+		if (!contains(e))
+			createLinked(e);
+		return this;
+	}
+
+	@Override
+	public boolean contains(Object o) {
+		Node<E> temp = start;
+		while (!Objects.isNull(temp)) {
+			if (temp.value == o) {
+				return true;
+			}
+			temp = temp.next;
+		}
+		return false;
+	}
+
 	public LinkedList<E> push(E e) {
 		createLinked(e);
 		return this;
@@ -26,7 +44,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
 
 	@Override
 	public E remove(int index) {
-		if(index < 0 || index > size)
+		if (index < 0 || index > size)
 			throw new ArrayIndexOutOfBoundsException("Index is invalid");
 		Node<E> node = null;
 		Node<E> temp = end;
