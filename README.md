@@ -9,3 +9,5 @@
 - Remove K elements
 - Remove Except Kth elements
 - PushUnique implementation
+- find middle element using slow-fast algorithm
+- find middle elemengt using size
